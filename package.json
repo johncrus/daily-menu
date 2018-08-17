@@ -1,0 +1,33 @@
+{
+  "name": "express-first-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "./cloud_sql_proxy -instances=daily-menu-209113:europe-west3:daily-menu-database=tcp:3306 | USER='admin' PASSWORD='admin' DATABASE='business_lunch' ACCESS_TOKEN='EAAdGBgZCIq0gBAJZA2acJQvWWm4zGZBy8zBuOLgv1epHuoZAgTz94Vr8ZCH4NesZCrb1fvwmOOSB1r6iD0kUEz6g3AZCimWKZCswgqAlXYXlesl72lL7nszf7YwaWVPg79r2jZC09tEpeiS8F21gCkGqYJ75lxUSU4eqAt9zMTLPjUgZDZD'  node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-handlebars": "^3.0.0",
+    "fbgraph": "^1.4.4",
+    "html-extractor": "^0.2.2",
+    "http": "0.0.0",
+    "http-request": "^0.7.0",
+    "https": "^1.0.0",
+    "json": "^9.0.6",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "node-schedule": "^1.3.0",
+    "request": "^2.83.0",
+    "serve-favicon": "~2.4.5",
+    "unfluff": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.21",
+    "@types/core-js": "^0.9.36",
+    "@types/node": "^10.5.1",
+    "typescript": "^2.9.2"
+  }
+}

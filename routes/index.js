@@ -25,10 +25,17 @@ var no_data_lacupola = {
     imagelink: no_data_image,
     timestamp: "No data for La Cupola"
 };
+var no_data_legend = {
+    title: "No data for Legend",
+    description: "No data for Legend",
+    imagelink: no_data_image,
+    timestamp: "No data for Legend"
+};
 function padding(array) {
     var chef = false;
     var bistro = false;
     var lacupola = false;
+    var legend = false;
     if (array !== undefined) {
         array.forEach(function (element) {
             if (element.title === 'Chef Galerie') {
@@ -40,6 +47,9 @@ function padding(array) {
             if (element.title === 'Special offers') {
                 lacupola = true;
             }
+            if (element.title === 'Legend') {
+                legend = true;
+            }
         });
     }
     if (!chef) {
@@ -50,6 +60,9 @@ function padding(array) {
     }
     if (!lacupola) {
         array.push(no_data_lacupola);
+    }
+    if (!legend) {
+        array.push(no_data_legend);
     }
     return array;
 }

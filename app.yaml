@@ -1,0 +1,4 @@
+runtime : nodejs
+env : flex
+beta_settings:
+  cloud_sql_instances: "daily-menu-209113:europe-west3:daily-menu-database"

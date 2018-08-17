@@ -10,6 +10,7 @@ const request = require ('request');
 const schedule = require('node-schedule');
 const db = require('./db');
 const graph = require('fbgraph');
+const favicon = require('serve-favicon')
 const app = express();
 
 
@@ -37,7 +38,7 @@ app.engine('hbs',hbs({extname: 'hbs',defaultLayout: 'layout',layoutsDir: __dirna
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-
+app.use(favicon(path.join(__dirname, 'public/images', 'node.png')))
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -119,11 +120,15 @@ function processAllMashupPosts (data){
             if(err){
                 console.log(err);
             }else{
+                console.log(res.name);
                 if(res.name !==null){
                     if (res.name ==='Bistro MOO'){
                         updateDatabaseMenuviaFB(res.name,res.description,res.full_picture,res.created_time);}}
                 if(res.name!==null){
                     if (res.name ==='Chef Galerie'){
+                        updateDatabaseMenuviaFB(res.name,res.description,res.full_picture,res.created_time);}}
+                if(res.name!==null){
+                    if (res.name ==='Legend'){
                         updateDatabaseMenuviaFB(res.name,res.description,res.full_picture,res.created_time);}}
             }
 

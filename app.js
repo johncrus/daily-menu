@@ -10,6 +10,7 @@ var request = require('request');
 var schedule = require('node-schedule');
 var db = require('./db');
 var graph = require('fbgraph');
+var favicon = require('serve-favicon');
 var app = express();
 var graphApiParameters = {
     fields: "full_picture , description , story , created_time , name , message"
@@ -30,6 +31,7 @@ var scheduler = schedule.scheduleJob("*/59 * * * * *", function () {
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.use(favicon(path.join(__dirname, 'public/images', 'node.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -100,6 +102,7 @@ function processAllMashupPosts(data) {
                 console.log(err);
             }
             else {
+                console.log(res.name);
                 if (res.name !== null) {
                     if (res.name === 'Bistro MOO') {
                         updateDatabaseMenuviaFB(res.name, res.description, res.full_picture, res.created_time);
@@ -107,6 +110,11 @@ function processAllMashupPosts(data) {
                 }
                 if (res.name !== null) {
                     if (res.name === 'Chef Galerie') {
+                        updateDatabaseMenuviaFB(res.name, res.description, res.full_picture, res.created_time);
+                    }
+                }
+                if (res.name !== null) {
+                    if (res.name === 'Legend') {
                         updateDatabaseMenuviaFB(res.name, res.description, res.full_picture, res.created_time);
                     }
                 }
